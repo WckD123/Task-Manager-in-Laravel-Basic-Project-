@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->timestamps();
             $table->dateTime('deadline');
             $table->string('status');
-            $table->integer('list_id');
+            $table->integer('project_id');
         });
     }
 
@@ -32,3 +32,5 @@ class CreateTasksTable extends Migration
         Schema::drop('tasks');
     }
 }
+
+

@@ -19,4 +19,21 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-// Route::get('/')
+Route::get('/admin', function(){
+    return view('admin.index');
+});
+
+
+Route::group(['middleware'=>'admin'], function(){
+
+    Route::get('/admin', function(){
+        return view('admin.index');
+    });
+
+    Route::resource('admin/tasks', 'AdminController@getAllTasks');
+    Route::resource('admin/user/{id}', 'AdminController@getUserInfo');
+    // Route::resource('admin/tasks/user/{id}', 'AdminController@getAllTasksByUser');
+    Route::resource('admin/media', 'AdminMediasController');
+    Route::resource('admin/comments', 'PostCommentsController');
+    Route::resource('admin/comment/replies', 'CommentRepliesController');
+});

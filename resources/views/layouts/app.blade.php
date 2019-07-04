@@ -57,7 +57,24 @@
                             <li><a href="{{ url('/userProject') }}">All Projects</a> </li>
                             <li><a href="{{ url('/userTask') }}">My Tasks</a> </li>
                         @endif
+                            <li>
+                                <div class="row">
+                                    <form action="/search" method="get" role="search">
+                                        {{ csrf_field() }}
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="search" placeholder="Search">
+                                            <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-search">
 
+                                                </span>
+                                            </button>
+                                        </span>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </li>
                     @endif
                 </ul>
 
@@ -68,6 +85,7 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
+
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

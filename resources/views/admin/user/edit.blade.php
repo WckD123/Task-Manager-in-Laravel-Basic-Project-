@@ -12,10 +12,6 @@
 
                         {!! Form::model($user,['method'=>'PUT', 'action'=>['AdminController@update',$user->id]]) !!}
 
-                        {{--                        <div class="form-group">--}}
-                        {{--                            {!! Form::label('id', 'ID') !!}--}}
-                        {{--                            {!! Form::text('id', null, ['class'=>'form-control']) !!}--}}
-                        {{--                        </div>--}}
                         <div class="form-group">
                             {!! Form::label('name', 'Name') !!}
                             {!! Form::text('name', null, ['class'=>'form-control']) !!}
@@ -26,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('role_id', 'Role') !!}
-                            {!! Form::text('role_id', null, ['class'=>'form-control']) !!}
+                            {!! Form::select('role_id',$roleNames ,null,['class'=>'form-control']) !!}
                         </div>
 
                         <div class="form-group">

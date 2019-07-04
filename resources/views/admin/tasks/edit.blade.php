@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('project_id', 'Project') !!}
-                            {!! Form::select('project_id',array($task->project_id=>$task->project_id) + $result ,null,['class'=>'form-control']) !!}
+                            {!! Form::select('project_id',$projects,null ,['class'=>'form-control']) !!}
                         </div>
 
                         <div class="form-group">

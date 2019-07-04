@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('admin.index')
 
 @section('content')
 
@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3>All Tasks
-                            <a href="{{ url('/userTask/addTask') }}">
+                            <a href="{{ url('/adminTask') }}">
                                 <button class="btn btn-primary">Add Task</button>
                             </a>
                         </h3>
@@ -38,17 +38,17 @@
                                         <td>{{$task->deadline}}</td>
                                         <td>{{$task->project->name}}</td>
                                         <td>
-                                            <a href="{{ url('/userTask/' . $task->id) . '/edit'}}">
+                                            <a href="{{ url('/adminTask/' . $task->id) . '/edit'}}">
                                                 <button class="btn btn-primary">Edit</button>
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{ url('/userTask/' . $task->id) . '/complete'}}">
+                                            <a href="{{ url('/adminTask/' . $task->id) . '/complete'}}">
                                                 <button class="btn btn-success">Completed</button>
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{ url('/userTask/' . $task->id) . '/delete'}}">
+                                            <a href="{{ url('/adminTask/' . $task->id) . '/delete'}}">
                                                 <button class="btn btn-danger">Delete</button>
                                             </a>
                                         </td>

@@ -16,6 +16,7 @@
                                     <td>Email</td>
                                     <td>Role</td>
                                     <td></td>
+                                    <td></td>
                                 <tr>
                                 </thead>
                                 <tbody>

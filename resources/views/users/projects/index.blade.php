@@ -30,14 +30,18 @@
                                 @foreach($projects as $project)
                                     <tr>
                                         <td>{{$project->id}}</td>
-                                        <td>{{$project->name}}</td>
                                         <td>
-                                            <a href="{{ url('/userProject/' . $project->id) . '/edit'}}">
+                                            <a href="{{ url('/userTask/' . $project->id . '/tasksForProject')}}">
+                                                {{$project->name}}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/userProject/' . $project->id . '/edit')}}">
                                                 <button class="btn btn-primary">Edit</button>
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{ url('/userProject/' . $project->id) . '/delete'}}">
+                                            <a href="{{ url('/userProject/' . $project->id . '/delete')}}">
                                                 <button class="btn btn-danger">Delete</button>
                                             </a>
                                         </td>

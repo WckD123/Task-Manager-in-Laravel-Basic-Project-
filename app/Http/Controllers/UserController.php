@@ -2,56 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Task;
-use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
-
-    public function getAllTasks(){
-        $tasks = Task::get();
-        return view('admin.tasks.index', compact('tasks'));
-    }
-
-    public function getAllTasksByUser($id){
-        $user = User::find($id);
-        $tasks = $user->tasks;
-        return view('admin.tasks.index', compact('tasks'));
-    }
-
-    public function getUserInfo($userId){
-        $user = User::find($userId);
-        return view('admin.user.edit', compact('user'));
-    }
-
-    public function allUsers(){
-        $users = User::get();
-        return view('admin.user.index', compact('users'));
-    }
-
-
-
-
-
-
-
-
-
     public function index()
     {
         //
-        $user = Auth::user();
-        return view('admin.tasks.index', compact('user'));
     }
 
     /**
@@ -107,9 +71,6 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $user = User::findOrFail($id);
-        $user->update($request->all());
-        return redirect('admin/allUsers');
     }
 
     /**

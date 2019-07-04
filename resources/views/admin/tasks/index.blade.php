@@ -7,7 +7,14 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h3>All Tasks</h3></div>
+                    <div class="panel-heading">
+                        <h3>All Tasks
+                            <a href="{{ url('/adminTask') }}">
+                                <button class="btn btn-primary">Add Task</button>
+                            </a>
+                        </h3>
+
+                    </div>
                     <div class="panel-body">
                         <table class="table">
                             <thead>
@@ -24,7 +31,7 @@
                                 @foreach($tasks as $task)
                                     <tr>
                                         <td>{{$task->id}}</td>
-                                        <td>{{$task->name}}</td>
+                                        <td><a href="{{ url('/adminTask/' . $task->id) . '/edit'}}">{{$task->name}}</a></td>
                                         <td>{{$task->status}}</td>
                                         <td>{{$task->deadline}}</td>
                                         <td>{{$task->project->name}}</td>

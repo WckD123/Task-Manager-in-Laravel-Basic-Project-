@@ -30,10 +30,16 @@ Route::group(['middleware'=>'admin'], function(){
         return view('admin.index');
     });
 
-    Route::resource('admin/tasks', 'AdminController@getAllTasks');
-    Route::resource('admin/user/{id}', 'AdminController@getUserInfo');
-    // Route::resource('admin/tasks/user/{id}', 'AdminController@getAllTasksByUser');
-    Route::resource('admin/media', 'AdminMediasController');
-    Route::resource('admin/comments', 'PostCommentsController');
-    Route::resource('admin/comment/replies', 'CommentRepliesController');
+    
+    Route::get('admin/tasks', 'AdminController@getAllTasks');
+    Route::get('admin/tasks/user/{id}', 'AdminController@getAllTasksByUser');
+    Route::get('admin/user/{userId}', 'AdminController@getUserInfo');
+    Route::get('admin/allUsers', 'AdminController@allUsers');
+//    Route::put('admin/user/{id}',['as' => 'admin.users.store' , 'uses' => 'AdminController@store']);
+    Route::resource('/admin','AdminController');
+    Route::resource('/adminTask','AdminTaskController');
+    Route::resource('/user','UserController');
+    // Route::resource('admin/media', 'AdminMediasController');
+    // Route::resource('admin/comments', 'PostCommentsController');
+    // Route::resource('admin/comment/replies', 'CommentRepliesController');
 });

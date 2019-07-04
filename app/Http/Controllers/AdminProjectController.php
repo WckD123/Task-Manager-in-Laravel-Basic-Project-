@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
 use App\Task;
+use App\Project;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class UserController extends Controller
+class AdminProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return "hjcbjcfbjfc";
+        return view('admin.projects.add');
     }
 
     /**
@@ -38,7 +38,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        unset($input['_token']);
+        Project::create($input);
+        $projects = Project::get();
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -60,7 +64,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -72,7 +77,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        unset($input['_token']);
+        $project = Project::find($id);
+        $project->update($input);
+        $projects = Project::get();
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -86,18 +96,10 @@ class UserController extends Controller
         //
     }
 
-
-
-    public function getAllTasks(){
-        $user = Auth::user();
-        $tasks = $user->tasks;
-        return view('user.tasks.index', compact('tasks'));
-    }
-
-    public function getAllProjects(){
-//        $user = Auth::user();
-//        $projects = $user->projects;
-        return "hjcbjcfbjfc";
-        //return view('user.projects.index', compact('projects'));
+    public function delete($id){
+        $project = Project::find($id);
+        $project->delete();
+        $projects = Project::get();
+        return view('admin.projects.index', compact('projects'));
     }
 }

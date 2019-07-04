@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
-use App\Task;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class UserController extends Controller
+class UserTaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return "hjcbjcfbjfc";
+        //
     }
 
     /**
@@ -84,20 +82,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-
-    public function getAllTasks(){
-        $user = Auth::user();
-        $tasks = $user->tasks;
-        return view('user.tasks.index', compact('tasks'));
-    }
-
-    public function getAllProjects(){
-//        $user = Auth::user();
-//        $projects = $user->projects;
-        return "hjcbjcfbjfc";
-        //return view('user.projects.index', compact('projects'));
     }
 }

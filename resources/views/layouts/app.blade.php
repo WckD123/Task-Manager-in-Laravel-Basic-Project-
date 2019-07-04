@@ -50,9 +50,14 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     @if (!Auth::guest())
                         @if(Auth::user()->role_id == 1)
+                            <li><a href="{{ url('/admin/projects') }}">All Projects</a> </li>
                             <li><a href="{{ url('/admin/tasks') }}">All Tasks</a> </li>
                             <li><a href="{{ url('/admin/allUsers') }}">Edit User Privileges</a></li>
+                        @else
+                            <li><a href="{{ url('/userProject') }}">All Projects</a> </li>
+                            <li><a href="{{ url('/userTask') }}">My Tasks</a> </li>
                         @endif
+
                     @endif
                 </ul>
 

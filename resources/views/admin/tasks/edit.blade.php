@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('deadline', 'Deadline') !!}
-                            {!! Form::date('deadline', null, ['class'=>'form-control']) !!}
+                            {!! Form::date('deadline', new \DateTime(), ['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('project_id', 'Project') !!}

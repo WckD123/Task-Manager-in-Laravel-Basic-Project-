@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
-use App\Task;
 use Illuminate\Http\Request;
-
+use Auth;
+use App\Project;
 use App\Http\Requests;
 
-class UserController extends Controller
+class UserProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return "hjcbjcfbjfc";
+        $projects = Project::get();
+//        return "hjcbjcfbjfc";
+        return view('users.projects.index', compact('projects'));
     }
 
     /**
@@ -86,18 +87,7 @@ class UserController extends Controller
         //
     }
 
-
-
-    public function getAllTasks(){
-        $user = Auth::user();
-        $tasks = $user->tasks;
-        return view('user.tasks.index', compact('tasks'));
-    }
-
-    public function getAllProjects(){
-//        $user = Auth::user();
-//        $projects = $user->projects;
-        return "hjcbjcfbjfc";
-        //return view('user.projects.index', compact('projects'));
+    public function addProject(){
+        return view('users.projects.add');
     }
 }

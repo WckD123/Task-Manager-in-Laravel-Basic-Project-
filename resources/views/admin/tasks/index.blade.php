@@ -24,6 +24,8 @@
                                 <td>Status</td>
                                 <td>Deadline</td>
                                 <td>Project</td>
+                                <td></td>
+                                <td></td>
                             <tr>
                             </thead>
                             <tbody>
@@ -31,10 +33,25 @@
                                 @foreach($tasks as $task)
                                     <tr>
                                         <td>{{$task->id}}</td>
-                                        <td><a href="{{ url('/adminTask/' . $task->id) . '/edit'}}">{{$task->name}}</a></td>
+                                        <td>{{$task->name}}</td>
                                         <td>{{$task->status}}</td>
                                         <td>{{$task->deadline}}</td>
                                         <td>{{$task->project->name}}</td>
+                                        <td>
+                                            <a href="{{ url('/adminTask/' . $task->id) . '/edit'}}">
+                                                <button class="btn btn-primary">Edit</button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/adminTask/' . $task->id) . '/complete'}}">
+                                                <button class="btn btn-success">Completed</button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/adminTask/' . $task->id) . '/delete'}}">
+                                                <button class="btn btn-danger">Delete</button>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif

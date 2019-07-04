@@ -24,22 +24,36 @@ Route::get('/admin', function(){
 });
 
 
+Route::get('/userProject/addProject', 'UserProjectController@addProject');
+
+Route::resource('/user','UserController');
+Route::resource('/userTask','UserTaskController');
+Route::resource('/userProject','UserProjectController');
+
+
 Route::group(['middleware'=>'admin'], function(){
 
     Route::get('/admin', function(){
         return view('admin.index');
     });
 
-    
     Route::get('admin/tasks', 'AdminController@getAllTasks');
+    Route::get('admin/projects', 'AdminController@getAllProjects');
     Route::get('admin/tasks/user/{id}', 'AdminController@getAllTasksByUser');
     Route::get('admin/user/{userId}', 'AdminController@getUserInfo');
     Route::get('admin/allUsers', 'AdminController@allUsers');
-//    Route::put('admin/user/{id}',['as' => 'admin.users.store' , 'uses' => 'AdminController@store']);
+
+
     Route::resource('/admin','AdminController');
     Route::resource('/adminTask','AdminTaskController');
-    Route::resource('/user','UserController');
+    Route::resource('/adminProject','AdminProjectController');
+
+    Route::get('/adminTask/{id}/delete','AdminTaskController@delete');
+    Route::get('/adminTask/{id}/complete','AdminTaskController@complete');
+    Route::get('/adminProject/{id}/delete','AdminProjectController@delete');
     // Route::resource('admin/media', 'AdminMediasController');
     // Route::resource('admin/comments', 'PostCommentsController');
     // Route::resource('admin/comment/replies', 'CommentRepliesController');
 });
+
+

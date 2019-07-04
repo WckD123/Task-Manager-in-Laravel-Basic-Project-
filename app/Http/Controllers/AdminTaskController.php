@@ -53,9 +53,10 @@ class AdminTaskController extends Controller
     {
         $input = $request->all();
         unset($input['_token']);
-//        $projectName = $input["project_id"];
-//        $projectId = Project::where('name', '==', $projectName)->get()->id;
-        $input["project_id"] = $input["project_id"] +1;
+//        echo dd($input);
+        if(is_numeric($input["project_id"])){
+            $input["project_id"] = $input["project_id"] +1;
+        }
         Task::create($input);
         $tasks = Task::get();
         return view('admin.tasks.index', compact('tasks'));
@@ -124,5 +125,20 @@ class AdminTaskController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+    public function delete($id){
+        $task = Task::find($id);
+        $task->delete();
+        $tasks = Task::get();
+        return view('admin.tasks.index', compact('tasks'));
+    }
+
+    public function complete($id){
+        $task = Task::find($id)->update(['status' => 'Complete']);
+        $tasks = Task::get();
+        return view('admin.tasks.index', compact('tasks'));
     }
 }

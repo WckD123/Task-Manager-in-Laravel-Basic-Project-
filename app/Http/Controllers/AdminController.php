@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use App\Task;
 use App\User;
 use Illuminate\Http\Request;
@@ -21,6 +22,11 @@ class AdminController extends Controller
     public function getAllTasks(){
         $tasks = Task::get();
         return view('admin.tasks.index', compact('tasks'));
+    }
+
+    public function getAllProjects(){
+        $projects = Project::get();
+        return view('admin.projects.index', compact('projects'));
     }
 
     public function getAllTasksByUser($id){

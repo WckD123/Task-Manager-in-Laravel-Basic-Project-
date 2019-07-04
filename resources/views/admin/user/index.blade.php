@@ -15,6 +15,7 @@
                                     <td>Name</td>
                                     <td>Email</td>
                                     <td>Role</td>
+                                    <td></td>
                                 <tr>
                                 </thead>
                                 <tbody>
@@ -22,10 +23,17 @@
                                     @foreach($users as $user)
                                             <tr>
                                                 <td>
-                                                    <a href="{{ url('admin/user/' . $user->id) }}">{{$user->name}}</a>
+                                                    {{$user->name}}
                                                 </td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->role->name}}</td>
+                                                <td>
+                                                    <a href="{{ url('admin/user/' . $user->id) }}">
+                                                        <button class ="btn btn-primary">
+                                                            Edit
+                                                        </button>
+                                                    </a>
+                                                </td>
                                             </tr>
                                     @endforeach
                                 @endif

@@ -33,7 +33,11 @@
                                 @foreach($tasks as $task)
                                     <tr>
                                         <td>{{$task->id}}</td>
-                                        <td>{{$task->name}}</td>
+                                        <td>
+                                            <a href="{{ url('/adminUserTask/' . $task->id)}}">
+                                                {{$task->name}}
+                                            </a>
+                                        </td>
                                         <td>{{$task->status}}</td>
                                         <td>{{$task->deadline}}</td>
                                         <td>{{$task->project->name}}</td>

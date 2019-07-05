@@ -64,6 +64,7 @@ Route::group(['middleware'=>'admin'], function(){
     // Admin's PHP artisan resource routes
 
     Route::resource('/admin','AdminController');
+    Route::resource('/adminUserTask','AdminUserTaskController');
     Route::resource('/adminTask','AdminTaskController');
     Route::resource('/adminProject','AdminProjectController');
 
@@ -72,6 +73,7 @@ Route::group(['middleware'=>'admin'], function(){
     Route::get('/adminTask/{id}/delete','AdminTaskController@delete');
     Route::get('/adminTask/{id}/complete','AdminTaskController@complete');
     Route::get('/adminProject/{id}/delete','AdminProjectController@delete');
+    Route::post('adminUserTask/assignUsers/{id}', 'AdminUserTaskController@assignUsers');
 });
 
 

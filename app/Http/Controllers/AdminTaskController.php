@@ -57,6 +57,7 @@ class AdminTaskController extends Controller
     public function edit($id)
     {
         $projects = Project::lists('name','id')->all();
+
         return view('admin.tasks.edit', compact(['task','projects']));
     }
 
